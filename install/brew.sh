@@ -55,7 +55,7 @@ formulas=(
     git-standup # 团队git提交情况
     entr
     zplug # zsh插件管理框架
-	caskroom/cask/the-unarchiver
+	cheat
 )
 
 for formula in "${formulas[@]}"; do
