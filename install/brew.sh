@@ -35,6 +35,7 @@ formulas=(
     markdown
 #    mas # 命令行apple store
 #    neovim/neovim/neovim
+	vim
 	neovim
 #    node
 #    nginx
@@ -47,7 +48,6 @@ formulas=(
     tree
     wget
 	curl
-    vim
     #z
 	fasd # 快速跳转，不确定能不能用
     zsh
@@ -68,8 +68,35 @@ for formula in "${formulas[@]}"; do
 done
 
 # brew cask applications
-brew cask install iterm2
-brew cask install shadowsocksx-ng
+
+cask_formulas=(
+	iterm2
+	shadowsocksx-ng
+	google-chrome
+	karabiner-elements
+	the-unarchiver
+	android-file-transfer
+	java
+	visual-studio-code
+	docker
+	wewechat
+	qq
+	onedrive
+	dash
+)
+
+for formula in "${cask_formulas[@]}"; do
+    formula_name=$( echo "$formula" | awk '{print $1}' )
+    if brew cask list "$formula_name" > /dev/null 2>&1; then
+        echo "$formula_name already installed... skipping."
+    else
+        brew cask install "$formula"
+    fi
+done
+
+
+
+
 
 echo -e "\\n\\nInstalling oh-my-zsh"
 echo "=============================="
