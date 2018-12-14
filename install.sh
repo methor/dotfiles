@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-bash install/brew.sh
+source install/brew.sh
 pwd=$(dirname "$BASH_SOURCE")
 ln -s "$pwd"/conf/.gitconfig ~/.gitconfig
 ln -s "$pwd"/conf/.tmux.conf ~/.tmux.conf

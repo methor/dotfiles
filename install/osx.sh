@@ -73,14 +73,14 @@ defaults write com.apple.finder ShowStatusBar -bool true
 #echo "Disable shadow in screenshots"
 #defaults write com.apple.screencapture disable-shadow -bool true
 
-echo "Enable highlight hover effect for the grid view of a stack (Dock)"
-defaults write com.apple.dock mouse-over-hilte-stack -bool true
+# echo "Enable highlight hover effect for the grid view of a stack (Dock)"
+# defaults write com.apple.dock mouse-over-hilte-stack -bool true
 
 # echo "Enable spring loading for all Dock items"
 # defaults write enable-spring-load-actions-on-all-items -bool true
 
-echo "Show indicator lights for open applications in the Dock"
-defaults write com.apple.dock show-process-indicators -bool true
+# echo "Show indicator lights for open applications in the Dock"
+# defaults write com.apple.dock show-process-indicators -bool true
 
 # Don’t animate opening applications from the Dock
 # defaults write com.apple.dock launchanim -bool false

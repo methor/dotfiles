@@ -131,7 +131,6 @@ source ~/.iterm2_shell_integration.zsh
 #fpath=(/usr/local/share/zsh/functions $fpath)
 #compinit
 
-
 # add color to man pages
 export MANROFFOPT='-c'
 export LESS_TERMCAP_mb=$(tput bold; tput setaf 2)
@@ -177,8 +176,8 @@ source ~/.iterm2_shell_integration.zsh
 
 export CHEATCOLORS=true
 
-export HIVE_HOME='/Users/huangmaosen/Downloads/apache-hive-3.1.0-bin'
-GO_TORCH='/Users/huangmaosen/repos/FlameGraph'
+export HIVE_HOME='/Users/`whoami`/Downloads/apache-hive-3.1.0-bin'
+GO_TORCH='/Users/`whoami`/repos/FlameGraph'
 export PATH="$GO_TORCH:$HIVE_HOME/bin:$PATH"
 if which jenv > /dev/null; then eval "$(jenv init -)"; fi
 export CLASSPATH=".:/usr/local/lib/antlr-4.7.1-complete.jar:$CLASSPATH"

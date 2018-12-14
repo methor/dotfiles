@@ -22,6 +22,7 @@ formulas=(
 #    ack
 	fd # 快速模糊搜索，用来搜索目录
 	Go
+	Go
     diff-so-fancy # diff美化
     direnv
     dnsmasq
@@ -48,6 +49,8 @@ formulas=(
 	curl
     z
 	# fasd # 快速跳转，不确定能不能用
+    #z
+	fasd # 快速跳转，不确定能不能用
     zsh
     ripgrep # 快速模糊搜索，用在文件
     git-standup # 团队git提交情况
@@ -94,6 +97,7 @@ cask_formulas=(
     pycharm
     goland
     sublime-text
+    jenv
 )
 
 for formula in "${cask_formulas[@]}"; do

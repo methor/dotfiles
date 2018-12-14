@@ -101,6 +101,7 @@ set mouse=a
 set number
 
 
+<<<<<<< HEAD
 " command! -bang -nargs=* Rg
 "   \ call fzf#vim#grep(
 "   \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>),
@@ -109,7 +110,6 @@ set number
 "   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
 "   \   <bang>0)
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
-
 command! -bang -nargs=? -complete=dir Files
 	\ call fzf#vim#files(<q-args>, fzf#vim#with_preview('right:50%', '?'), <bang>0)
 command! -bang -nargs=? -complete=dir FZF
@@ -134,6 +134,9 @@ let g:fzf_colors =
 
 let $GTAGSLABEL = 'native-pygments'
 let $GTAGSCONF = '/usr/local/share/gtags/gtags.conf'
+<<<<<<< HEAD
 
 " crontab broken fix
 autocmd filetype crontab setlocal nobackup nowritebackup
+=======
+>>>>>>> f085004e71d897f5feb4fce9a8811d6905726901
