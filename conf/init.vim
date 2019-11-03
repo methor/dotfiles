@@ -101,7 +101,6 @@ set mouse=a
 set number
 
 
-<<<<<<< HEAD
 " command! -bang -nargs=* Rg
 "   \ call fzf#vim#grep(
 "   \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>),
@@ -134,9 +133,5 @@ let g:fzf_colors =
 
 let $GTAGSLABEL = 'native-pygments'
 let $GTAGSCONF = '/usr/local/share/gtags/gtags.conf'
-<<<<<<< HEAD
-
 " crontab broken fix
 autocmd filetype crontab setlocal nobackup nowritebackup
-=======
->>>>>>> f085004e71d897f5feb4fce9a8811d6905726901

@@ -24,6 +24,7 @@ formulas=(
 	Go
 	Go
     diff-so-fancy # diff美化
+	clipper
     direnv
     dnsmasq
     fzf # 模糊搜索框架
@@ -59,6 +60,10 @@ formulas=(
 	cheat
 	npm
 	qlcolorcode qlstephen qlmarkdown quicklook-json qlimagesize webpquicklook qlvideo provisionql quicklookapk
+	cloc
+	cmake
+	global
+	ninja
 )
 
 for formula in "${formulas[@]}"; do
@@ -98,6 +103,16 @@ cask_formulas=(
     goland
     sublime-text
     jenv
+	betterzip
+	webpquicklook
+	suspicious-package
+	quicklookase
+	qlvideo
+	provisionql
+	quicklook-pat
+	quicklookapk
+	hex-fiend
+	julia
 )
 
 for formula in "${cask_formulas[@]}"; do
@@ -109,6 +124,8 @@ for formula in "${cask_formulas[@]}"; do
     fi
 done
 
+# brew services, managing backgroud services
+brew tap homebrew/services
 
 
 
