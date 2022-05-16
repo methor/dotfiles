@@ -1,22 +1,23 @@
 #!/usr/bin/env bash
 
-source install/brew.sh
-pwd=$(dirname "$BASH_SOURCE")
-ln -s "$pwd"/conf/.gitconfig ~/.gitconfig
-ln -s "$pwd"/conf/.tmux.conf ~/.tmux.conf
-ln -s "$pwd"/conf/.zshrc ~/.zshrc
+bash install/brew.sh
+
+pwd=$(cd $(dirname $0); pwd)
+ln -Fs "$pwd"/conf/.gitconfig ~/.gitconfig
+ln -Fs "$pwd"/conf/.tmux.conf ~/.tmux.conf
+ln -Fs "$pwd"/conf/.zshrc ~/.zshrc
 
 mkdir -p ~/.config/nvim/
-ln -s "$pwd"/conf/init.vim ~/.config/nvim/init.vim
-ln -s "$pwd"/conf/hub ~/.config/hub
+ln -Fs "$pwd"/conf/init.vim ~/.config/nvim/init.vim
+ln -Fs "$pwd"/conf/hub ~/.config/hub
 
-# make karabiner-elements symlinks and reload
-ln -s "$pwd"/conf/karabiner ~/.config
+# copy and paste karabiner-elements configs and reload
+cp -R "$pwd"/conf/karabiner ~/.config
 launchctl kickstart -k gui/`id -u`/org.pqrs.karabiner.karabiner_console_user_server
 
 mkdir -p ~/.config/iterm2
-ln -s "$pwd"/conf/com.googlecode.iterm2.plist ~/.config/iterm2/com.googlecode.iterm2.plist
+ln -Fs "$pwd"/conf/iterm2/com.googlecode.iterm2.plist ~/.config/iterm2/com.googlecode.iterm2.plist
 
 mkdir -p ~/bin
-ln -s "$pwd"/bin/tm ~/bin/tm
+ln -Fs "$pwd"/bin/tm ~/bin/tm
 

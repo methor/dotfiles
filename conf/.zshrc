@@ -126,7 +126,7 @@ alias reload!='RELOAD=1 source ~/.zshrc'
 # substitute homebrew bottles (binary packages)
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
 
-source ~/.iterm2_shell_integration.zsh
+# source ~/.iterm2_shell_integration.zsh
 
 #fpath=(/usr/local/share/zsh/functions $fpath)
 #compinit
@@ -146,8 +146,8 @@ export LESS_TERMCAP_mh=$(tput dim)
 if [ -z ${RELOAD}  ]; then
 	umask g-w,o-w
 
-	export ZPLUG_HOME=/usr/local/opt/zplug
-	source $ZPLUG_HOME/init.zsh
+	export ZPLUG_HOME=/opt/homebrew/Cellar/zplug
+	source $ZPLUG_HOME/*/init.zsh
 	zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
 
@@ -172,16 +172,17 @@ HOMEBREW_NO_AUTO_UPDATE=1
 export GOPATH=~/code
 export PATH=$GOPATH/bin:$PATH
 
-source ~/.iterm2_shell_integration.zsh
+# source ~/.iterm2_shell_integration.zsh
 
 export CHEATCOLORS=true
 
-export HIVE_HOME='/Users/`whoami`/Downloads/apache-hive-3.1.0-bin'
-GO_TORCH='/Users/`whoami`/repos/FlameGraph'
+export HIVE_HOME="/Users/`whoami`/Downloads/apache-hive-3.1.0-bin"
+GO_TORCH="/Users/`whoami`/repos/FlameGraph"
 export PATH="$GO_TORCH:$HIVE_HOME/bin:$PATH"
 if which jenv > /dev/null; then eval "$(jenv init -)"; fi
 export CLASSPATH=".:/usr/local/lib/antlr-4.7.1-complete.jar:$CLASSPATH"
 export OPENGROK_TOMCAT_BASE=/usr/local/Cellar/tomcat/9.0.10/libexec
+export PYTHONPATH="$PYTHONPATH:/Users/`whoami`/Documents/lianjia-beike-spider"
 
 prettyjson_s() {
     echo "$1" | python -m json.tool
@@ -194,3 +195,6 @@ prettyjson_f() {
 prettyjson_w() {
     curl "$1" | python -m json.tool
 }
+
+# source z.sh
+. /opt/homebrew/etc/profile.d/z.sh

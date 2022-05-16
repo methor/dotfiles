@@ -1,18 +1,28 @@
 #!/usr/bin/env bash
 
-if test ! "$( which brew )"; then
-    echo "Installing homebrew"
-    ruby -e "$( curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install )"
+if test ! "$( which zsh )"; then
+    echo -e "\\n\\nInstalling oh-my-zsh"
+    echo "=============================="
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
-brew install git
+if test ! "$( which brew )"; then
+    echo "Installing homebrew"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    echo $(eval "(/opt/homebrew/bin/brew shellenv)") >> /Users/maosen/.zprofile
+    eval $(/opt/homebrew/bin/brew shellenv)
+fi
+# supress zshrc error
+/opt/homebrew/bin/brew install zplug
 
-cd "$(brew --repo)"
-git remote set-url origin https://mirrors.ustc.edu.cn/brew.git
-cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
-git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
-export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
-brew update
+
+# brew install git
+# cd "$(brew --repo)"
+# git remote set-url origin https://mirrors.ustc.edu.cn/brew.git
+# cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
+# git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
+# export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
+# brew update
 
 
 echo -e "\\n\\nInstalling homebrew packages..."
@@ -49,8 +59,6 @@ formulas=(
     wget
 	curl
     z
-	# fasd # 快速跳转，不确定能不能用
-    #z
 	fasd # 快速跳转，不确定能不能用
     zsh
     ripgrep # 快速模糊搜索，用在文件
@@ -103,7 +111,6 @@ cask_formulas=(
     goland
     sublime-text
     jenv
-	betterzip
 	webpquicklook
 	suspicious-package
 	quicklookase
@@ -117,10 +124,10 @@ cask_formulas=(
 
 for formula in "${cask_formulas[@]}"; do
     formula_name=$( echo "$formula" | awk '{print $1}' )
-    if brew cask list "$formula_name" > /dev/null 2>&1; then
+    if brew list cask "$formula_name" > /dev/null 2>&1; then
         echo "$formula_name already installed... skipping."
     else
-        brew cask install "$formula"
+        brew install cask "$formula"
     fi
 done
 
@@ -128,20 +135,18 @@ done
 brew tap homebrew/services
 
 
-
-
-echo -e "\\n\\nInstalling oh-my-zsh"
-echo "=============================="
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
-
 # check for custom bin directory and add to path
 if [[ -d ~/bin ]]; then
     export PATH=~/bin:$PATH
 fi
 
-pwd=$(dirname "$BASH_SOURCE")
-bash "$pwd"/pyenv.sh
+# this script is being sourced
+if [[ $0 != $BASH_SOURCE ]]; then
+    pwd="$pwd/$( dirname "${BASH_SOURCE[0]}" )"
+# otherwise being executed
+else
+    pwd="$(cd $(dirname $0); pwd)"
+fi
 bash "$pwd"/nvim.sh
 bash "$pwd"/fzf.sh
 bash "$pwd"/osx.sh
